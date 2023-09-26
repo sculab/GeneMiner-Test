@@ -22,28 +22,7 @@ for i in $(cat depth.list);do for j in $(cat limit.list);do echo "geneminer.py -
 ParaFly -c run_var.sh -CPU 4
 
 
-
-###4.limit
-#Prepare the commands
-mkdir limit
-rm run_limit.sh
-for i in $(cat depth.list);do for j in $(cat limit.list);do echo "geneminer.py -s data/${i}x.fq -rtfa ref_Brassicaceae_353/ -t 4 -limit_count ${j} -o limit/${i}x-l${j}" >>run_limit.sh;done;done
-#run
-ParaFly -c run_limit.sh -CPU 4
-
-
-
-###6.weighted model
-#Prepare the commands
-mkdir weighted_model_free
-rm run_wmf.sh
-less depth.list |while read a ;do echo "geneminer.py -s data/${a}x.fq -rtfa ref_Brassicaceae_353/ -t 4 -o weighted_model_free/${a}x" >>run_wmf.sh;done
-#run
-ParaFly -c run_wmf.sh -CPU 4
-
-
-
-###6.bootstrap
+###4.bootstrap
 #Prepare the commands
 mkdir bootstrap
 rm run_bootstrap.sh
