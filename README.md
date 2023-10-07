@@ -1,81 +1,96 @@
-## Instructions for running TEST I
+## Instructions for Running TEST I
 
-**Note1:** Before running, You should install GeneMiner, HybPiper 2.01, aTRAM 2.02,3, Trinity-v2.14.04, SPAdes v3.15.55
-**Note2:** Please pay attention to the parameters selection and path setting.
+**Note1:** Prior to execution, ensure the installation of the following software: GeneMiner, HybPiper 2.01, aTRAM 2.02,3, Trinity-v2.14.04 and SPAdes v3.15.55
 
-**1. Download sequencing data**
+**Note2:** Pay attention to parameter selection and path configuration.
 
-Two public data sets of Arabidopsis thaliana (SRR18391637) and Oryza sativa (SRR9663069) should be downloaded from the European Nucleotide Archive (http://www.ebi.ac.uk)
+**1. Download Sequencing Data**
 
-Place the downloaded files in the TEST I folder, or you can use the following commands to download directly:
+Download two public datasets for _Arabidopsis thaliana_ (SRR18391637) and _Oryza sativa_ (SRR9663069) from the European Nucleotide Archive (http://www.ebi.ac.uk)
+
+Place the downloaded files in the TEST I folder or use the following commands to download directly:
 
 - wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR183/037/SRR18391637/SRR18391637_1.fastq.gz
 - wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR183/037/SRR18391637/SRR18391637_2.fastq.gz
 - wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR966/009/SRR9663069/SRR9663069_1.fastq.gz
 - wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR966/009/SRR9663069/SRR9663069_2.fastq.gz
 
-**2. Download reference sequences**
+**2. Download Reference Sequences**
 
-Download Angiosperms353 sequences of Brassicaceae
+Download Angiosperms353 sequences of Brassicaceae:
 - python download_reference.py -d requirement.csv -o download_Brassicaceae_353 -family Brassicaceae  -exclude Arabidopsis_thaliana  -t 4
 
-Download Angiosperms353 sequences of Poaceae
+Download Angiosperms353 sequences of Poaceae:
 - python download_reference.py -d requirement.csv -o download_Poaceae_353 -family Poaceae -exclude Oryza_sativa  -t 4
 
-**3. Download the gold standard**
+**3. Run work.sh**
+
+Execute the "work.sh" script.
+
+**Introduction to Files and Folders**
 
 INSDC.PRJNA10719.Arabidopsis_thaliana.a353.fasta:
-- The Angiosperms353 sequences of Arabidopsis thaliana from Kew Tree of Life Explorer (https://treeoflife.kew.org)
+- The Angiosperms353 sequences of _Arabidopsis thaliana_ from Kew Tree of Life Explorer (https://treeoflife.kew.org)
 
 INSDC.PRJDB1747.Oryza_sativa.a353.fasta:
-- The Angiosperms353 sequences of Oryza sativa from Kew Tree of Life Explorer (https://treeoflife.kew.org)
+- The Angiosperms353 sequences of _Oryza sativa_ from Kew Tree of Life Explorer (https://treeoflife.kew.org)
 
-**4. ref_Brassicaceae_353**
+ref_Brassicaceae_353:
 
-The directory to store Angiosperms353 sequences of the Brassicaceae family is used as reference sequences for GeneMiner. These reference sequences are modified and merged from the Angiosperms353 sequences of the Brassicaceae family, or you can directly use the “gene_file” folder in download_Brassicaceae_353.
+This directory stores Angiosperms353 sequences of the Brassicaceae family, used as reference sequences for GeneMiner. These reference sequences have been modified and merged from the Angiosperms353 sequences of the Brassicaceae family. Alternatively, you can directly utilize the "gene_file" folder in download_Brassicaceae_353.
 
-**5. ref_Poaceae_353**
+ref_Poaceae_353:
 
-The directory to store Angiosperms353 sequences of the Poaceae family is used as reference sequences for GeneMiner. These reference sequences are modified and merged from the Angiosperms353 sequences of the Poaceae family, or you can directly use the “gene_file” folder in download_Poaceae_353.
+This directory stores Angiosperms353 sequences of the Poaceae family, used as reference sequences for GeneMiner. These reference sequences have been modified and merged from the Angiosperms353 sequences of the Poaceae family. Alternatively, you can directly use the "gene_file" folder in download_Poaceae_353.
 
-**6. ref_Brassicaceae_for_hybpiper.fasta**
+ref_Brassicaceae_for_hybpiper.fasta:
 
-The reference sequences are used for HybPiper, which can be obtained by modifying and merging the Angiosperms353 genes from the Brassicaceae family or by directly using the “ref_hybpiper.fasta” file in download_Brassicaceae_353.
+These reference sequences are utilized for HybPiper and can be obtained by modifying and merging the Angiosperms353 genes from the Brassicaceae family. Alternatively, you can directly use the "ref_hybpiper.fasta" file in download_Brassicaceae_353.
 
-**7. ref_Poaceae_for_hybpiper.fasta**
+ref_Poaceae_for_hybpiper.fasta:
 
-The reference sequences are used for HybPiper, which can be obtained by modifying and merging the Angiosperms353 genes from the Poaceae family or by directly using the “ref_hybpiper.fasta” file in download_ Poaceae_353.
+These reference sequences are utilized for HybPiper and can be obtained by modifying and merging the Angiosperms353 genes from the Poaceae family. Alternatively, you can directly use the "ref_hybpiper.fasta" file in download_Poaceae_353.
 
-**8. work.sh**
+work.sh:
 
-The file records the command to run the TEST I 
+This file contains the commands to run TEST I.
 
-## Instructions for running TEST II
-**Note:** Before running, you need to first install [NGSNGS](https://github.com/RAHenriksen/NGSNGS)
+## Instructions for Running TEST II
+**Note:** Before running, ensure the installation of [NGSNGS](https://github.com/RAHenriksen/NGSNGS)
 
-**1. ref_var**
+**Detailed Steps**
 
-The folder contains sequences that are randomly mutated based on the Arabidopsis thaliana Angiosperms353 gene (with Arabidopsis_thaliana_0 as the gold standard). The number following the folder represents the percentage of mutation.
+- Execute the "work_1.sh" script.
+- Create a backup of the "path_of_GeneMiner/lib/my_assemble.py" file.
+- Replace the original file with the provided "my_assemble.py" to eliminate the weighted node model.
+- Execute the "work_2.sh" script.
+- Restore the previously backed-up "my_assemble.py" file.
 
-**2. \*.list文件**
+**Introduction to Files and Folders**
 
-The required identifiers for generating script files. Please do not modify.
+ref_var:
 
-**3. AccFreqL150R1.txt**
+This folder contains sequences with random mutations based on the _Arabidopsis thaliana_ Angiosperms353 gene (with Arabidopsis_thaliana_0 as the gold standard). The number following the folder represents the percentage of mutation.
 
-From NGSNGS, this is the Read Quality profile for single-end read.
+\*.list files:
 
-**4. work_1.sh**
+These files contain the required identifiers for generating script files. Please refrain from modifying them.
 
-The file records the command to run the first part of TEST II.
+AccFreqL150R1.txt:
 
-**5. my_assemble.py**
+This file contains the commands to run the first part of TEST II.
 
-Before running work_2.sh, please first backup path_of_GeneMiner/lib/my_assemble.py, and replace the original file with this my_assemble.py, to remove the weighted node model.
+work_1.sh:
 
-**6. work_2.sh**
+This file contains the commands to run the first part of TEST II.
 
-The file records the command to run the second part of TEST II.
+my_assemble.py:
+
+Before running work_2.sh, make a backup of the path_of_GeneMiner/lib/my_assemble.py, and replace the original file with this my_assemble.py to remove the weighted node model.
+
+work_2.sh:
+
+This file contains the commands to run the second part of TEST II.
 
 After running work_2.sh, please restore the backed-up my_assemble.py.
 
