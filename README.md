@@ -9,20 +9,22 @@
 Download two public datasets for _Arabidopsis thaliana_ (SRR18391637) and _Oryza sativa_ (SRR9663069) from the European Nucleotide Archive (http://www.ebi.ac.uk)
 
 Place the downloaded files in the TEST I folder or use the following commands to download directly:
+```
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR183/037/SRR18391637/SRR18391637_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR183/037/SRR18391637/SRR18391637_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR966/009/SRR9663069/SRR9663069_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR966/009/SRR9663069/SRR9663069_2.fastq.gz
+```
+**2. Decompression Reference Sequences**
 
-- wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR183/037/SRR18391637/SRR18391637_1.fastq.gz
-- wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR183/037/SRR18391637/SRR18391637_2.fastq.gz
-- wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR966/009/SRR9663069/SRR9663069_1.fastq.gz
-- wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR966/009/SRR9663069/SRR9663069_2.fastq.gz
-
-**2. Download Reference Sequences**
-
-Download Angiosperms353 sequences of Brassicaceae:
-- python download_reference.py -d requirement.csv -o download_Brassicaceae_353 -family Brassicaceae  -exclude Arabidopsis_thaliana  -t 4
-
-Download Angiosperms353 sequences of Poaceae:
-- python download_reference.py -d requirement.csv -o download_Poaceae_353 -family Poaceae -exclude Oryza_sativa  -t 4
-
+To decompress the Angiosperms353 sequences for Brassicaceae sourced from the Kew Tree of Life Explorer (https://treeoflife.kew.org), use the following command:
+```
+tar -zxvf ref_Brassicaceae_353.gz
+```
+To decompress the Angiosperms353 sequences for Poaceae from the same source, use:
+```
+tar -zxvf ref_Poaceae_353.gz
+```
 **3. Run work.sh**
 
 Execute the "work.sh" script.

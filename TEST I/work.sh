@@ -1,5 +1,6 @@
 ### decompress all gz files to speed up the analysis
-gzip -d *.gz
+tar -zcvf ref_Brassicaceae_353.gz
+tar -zcvf ref_Poaceae_353.gz
 
 ###1. Run GeneMiner
 #(1) Arabidopsis thaliana
