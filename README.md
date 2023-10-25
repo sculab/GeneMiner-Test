@@ -62,6 +62,10 @@ This file contains the commands to run TEST I.
 
 **Detailed Steps**
 
+Decompress the Angiosperms353 sequences for Brassicaceae:
+```
+tar -zxvf ref_Brassicaceae_353.gz
+```
 - Execute the "work_1.sh" script.
 - Create a backup of the "path_of_GeneMiner/lib/my_assemble.py" file.
 - Replace the original file with the provided "my_assemble.py" to eliminate the weighted node model.
