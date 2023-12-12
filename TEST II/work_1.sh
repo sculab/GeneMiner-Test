@@ -1,7 +1,7 @@
 ###1.resample
 mkdir data
 rm resample.sh
-less reads-depth.list |while read a b;do echo "ngsngs -i Athaliana_167_TAIR10.cds.fa -r ${a} -f fq -l 100 -seq SE -t 1 -q1 AccFreqL150R1.txt -o ./data/${b}" >>resample.sh;done
+less reads-depth.list |while read a b;do echo "ngsngs -i TAIR10_chr_all.fas -r ${a} -f fq -l 100 -seq SE -t 1 -q1 AccFreqL150R1.txt -o ./data/${b}" >>resample.sh;done
 #run
 ParaFly -c resample.sh -CPU 4
 
